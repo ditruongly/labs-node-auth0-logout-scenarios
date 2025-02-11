@@ -11,7 +11,7 @@ block content
       else
         | Anonymous
       |.
-      | These are your expenses:
+      | These are your sales:
     table(border='1')
       tr
         each key in Object.keys(expenses[0])
@@ -21,4 +21,4 @@ block content
         tr
           each key in Object.keys(expense)
             td=expense[key]
-    p Don't spend too much.
+    p Great job!

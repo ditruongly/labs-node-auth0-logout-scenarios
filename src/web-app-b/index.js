@@ -11,7 +11,7 @@ const { auth, requiresAuth } = require('express-openid-connect');
 const {
   checkUrl,
   APP_URL, // Public URL for this app
-  API_URL, // URL for Expenses API
+  API_URL, // URL for sales API
   ISSUER_BASE_URL, // Auth0 Tenant Url
   CLIENT_ID, // Auth0 Web App Client
   CLIENT_SECRET, // Auth0 Web App Client Secret
@@ -52,30 +52,30 @@ app.use(
   })
 );
 
-const expenses = [
+const sales = [
   {
     date: new Date(),
-    description: 'Pizza for a Coding Dojo session.',
-    value: 2000,
+    description: 'Coding Dojo Basics.',
+    value: 4000,
   },
   {
     date: new Date(),
-    description: 'Coffee for a Coding Dojo session.',
-    value: 420,
+    description: 'Coding Dojo Security Principles.',
+    value: 2300,
   },
 
   {
     date: new Date(),
-    description: 'Donuts for a Coding Dojo session.',
-    value: 69,
+    description: 'Coding Dojo API Management.',
+    value: 2000,
   },
 ];
 
 app.get('/', async (req, res) => {
   res.render('home', {
     user: req.oidc && req.oidc.user,
-    total: expenses.reduce((accum, expense) => accum + expense.value, 0),
-    count: expenses.length,
+    total: sales.reduce((accum, expense) => accum + expense.value, 0),
+    count: sales.length,
   });
 });
 
@@ -90,10 +90,10 @@ app.get('/user', requiresAuth(), async (req, res) => {
   });
 });
 
-app.get('/expenses', requiresAuth(), async (req, res, next) => {
-  res.render('expenses', {
+app.get('/sales', requiresAuth(), async (req, res, next) => {
+  res.render('sales', {
     user: req.oidc && req.oidc.user,
-    expenses,
+    sales,
   });
 });
 

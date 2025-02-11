@@ -14,10 +14,10 @@ block content
       | These are your sales:
     table(border='1')
       tr
-        each key in Object.keys(expenses[0])
+        each key in Object.keys(sales[0])
           th
             strong=key
-      each expense in expenses
+      each expense in sales
         tr
           each key in Object.keys(expense)
             td=expense[key]

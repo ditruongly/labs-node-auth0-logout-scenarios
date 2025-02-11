@@ -4,7 +4,7 @@ const {
   CLIENT_ID,
   CLIENT_SECRET,
   SESSION_SECRET = 'a long, randomly-generated string stored in env',
-  PORT = 37500,
+  PORT = 37501,
 } = process.env;
 
 const appUrl = `http://localhost:${PORT}`;

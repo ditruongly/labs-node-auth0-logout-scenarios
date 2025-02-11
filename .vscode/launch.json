@@ -7,23 +7,35 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Web App",
+      "name": "Launch Web App A",
       "skipFiles": [
         "<node_internals>/**"
       ],
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "web-app:start"],
-      "port": 9007,
       "presentation": {
           "hidden":true //hide from debug menu
         }
     },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Web App B",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "web-app-b:start"],
+      "presentation": {
+          "hidden":true //hide from debug menu
+        }
+    }
   ],
   "compounds": [// allow you to start multiple apps
     {
       "name": "Launch All", // menu name
       "configurations": [ // list of things to launch
-        "Launch Web App" // as many named configurations as needed
+        "Launch Web App A", "Launch Web App B" // as many named configurations as needed
       ]
     }
   ]

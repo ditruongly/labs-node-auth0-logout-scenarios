@@ -1,6 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "2: Manage federated logout",
+  "title": "2: Examine federated logout",
   "steps": [
     {
       "file": "",

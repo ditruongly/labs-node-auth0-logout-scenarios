@@ -5,7 +5,7 @@
     {
       "file": "",
       "line": 1,
-      "description": "## What you'll learn\n\nThe logout scenarios analyzed so far assume that there is a single application and that the user logs out of that application. What happens when multiple applications are involved in the same authenticated session? In this scenario, we'll explore Global logout with Auth0's implementation of [OIDC Back-channel Logout](https://auth0.com/docs/authenticate/login/logout/back-channel-logout). Back-channel Logout is used when a regular web application communicates the termination of the application session to the identity provider (IdP) using the session ID (sid) included in ID tokens and Logout tokens.\n\nIn this lab, we'll cover how to achieve Back-channel Logout with the Auth0 `express-openid-connect` library.\n\n",
+      "description": "## What you'll learn\n\nThe logout scenarios analyzed so far assume that there is a single application and that the user logs out of that application. What happens when multiple applications are involved in the same authenticated session? In this scenario, we'll explore Global logout with Auth0's implementation of [OIDC Back-channel Logout](https://auth0.com/docs/authenticate/login/logout/back-channel-logout). Back-channel Logout is used when a regular web application communicates the termination of the application session to the identity provider (IdP) using the session ID (sid) included in ID tokens and Logout tokens. \n\nAuth0 currently supports Back-channel Logout for all tenants on an enterprise subscription.\n\nIn this lab, we'll cover how to achieve Back-channel Logout with the Auth0 `express-openid-connect` library.\n\n",
       "selection": {
         "start": {
           "line": 12,
@@ -41,7 +41,7 @@
       "file": "README.md",
       "line": 1,
       "title": "Recap",
-      "description": "\n**In this lab you:**\n\n- Implemented Global logout using Auth0's OIDC Back-channel Logout."
+      "description": "\n**In this lab you:**\n\n- Implemented Global logout using Auth0's OIDC Back-channel Logout. \n\nRecall that this feature is currently available to all enterprise tenants.\n\nYou've finished the end of the lab! You may now close and stop this Codespace."
     }
   ]
 }

@@ -18,6 +18,27 @@
       }
     },
     {
+      "file": "src/web-app/index.js",
+      "description": "## Use express-openid-connect to manage authentication\n\n*Notice that /web-app/index.js has been opened for you.*\n\nThe web app code provided in this lab uses the Auth0 [`express-openid-connect`](https://github.com/auth0/express-openid-connect?tab=readme-ov-file#documentation) library to manage authentication. In particular, we'll be leveraging [`auth`](https://auth0.github.io/express-openid-connect/functions/auth.html) middleware to configure login and logout for our application.",
+      "line": 9
+    },
+    {
+      "file": "src/web-app/index.js",
+      "description": "## Use the auth middleware\n\n*Notice that /web-app/index.js has been opened for you.*\n\n\nNotice in the app code above, we call the [`auth`]((https://auth0.github.io/express-openid-connect/functions/auth.html)) middleware with `app.use(auth())`.  When this runs, the middleware also defines `/login` and `/logout` endpoints for your web app.\n\nNote that the `auth` middleware takes the required parameters (`clientId`, `secret`, `baseURL`, `issuerBaseURL`). These are set in your app's `.env` file for you. You can also provide additional optional [ConfigParams](https://auth0.github.io/express-openid-connect/interfaces/ConfigParams.html), which we'll explore a bit later.\n",
+      "line": 53,
+      "selection": {
+        "start": {
+          "line": 41,
+          "character": 1
+        },
+        "end": {
+          "line": 53,
+          "character": 100
+        }
+      },
+      "title": "Use the auth middleware"
+    },
+    {
       "title": "Launch the web app",
       "description": "## Launch the web app\n\n1. Select [this link](command:auth0.lab.tenantConfigure)  to automatically register the web applications we'll use in this lab. This will create **Lab: Web App A** and **Lab: Web App B** in your tenant.\n1. Select [this link](auth0.lab.localConfigure) to automatically create the .env files for these web applications in this workspace. \n1. Select [this link](command:workbench.action.debug.start) to start the applications. \n> This will launch Web App A on port 37500 and Web App B on port 37501. We will only be using Web App A in this section.\n1. Select the **PORTS** tab in this workspace.\n1. Right click on Port 37500 and select **Port visibility** > **Public**.\n1. Repeat this step for Port 37501, as we will use the second web app later in this lab.\n"
     },
@@ -35,13 +56,17 @@
     },
     {
       "file": "src/web-app/index.js",
-      "description": "## Configure the auth middleware to close the Auth0 session\n\n*Notice that /web-app/index.js has been opened for you.*\n\nThe [`auth`](https://auth0.github.io/express-openid-connect/functions/auth.html) middleware is part of the Auth0 SDK `express-openid-connect`. It takes required parameters (`clientId`, `secret`, `baseURL`, `issuerBaseURL`) necessary to complete application authentication. You can also provide additional optional [ConfigParams](https://auth0.github.io/express-openid-connect/interfaces/ConfigParams.html) like `idpLogout`.\n\nSpecifying `idpLogout: true` will log a user out of the IdP (Auth0 in this case) when they log out of the application. **Note:** If you are using a custom domain for your Auth0 tenant, you should use `auth0Logout: true` instead.\n\n1. **Uncomment** the line above to set `idpLogout: true`.\n1. Select [this link]() to stop the web app.\n1. Select [this link]() to launch the web app again.",
+      "description": "## Configure the auth middleware to close the Auth0 session\n\n*Notice that /web-app/index.js has been opened for you.*\n\nThe [`auth`](https://auth0.github.io/express-openid-connect/functions/auth.html) middleware is part of the Auth0 SDK `express-openid-connect`. It takes required parameters (`clientId`, `secret`, `baseURL`, `issuerBaseURL`) necessary to complete application authentication. You can also provide additional optional [ConfigParams](https://auth0.github.io/express-openid-connect/interfaces/ConfigParams.html) like `idpLogout`.\n\nSpecifying `idpLogout: true` will log a user out of the IdP (Auth0 in this case) when they log out of the application. **Note:** If you are using a custom domain for your Auth0 tenant, you should use `auth0Logout: true` instead.\n\n1. **Uncomment** the line above to set `idpLogout: true`.\n1. Select [this link](command:workbench.action.debug.stop) to stop the web app.\n1. Select [this link](command:workbench.action.debug.start) to launch the web app again.",
       "line": 47
     },
     {
-      "title": "Examine the logout flow using express-openid-connect",
+      "title": "Perform a network trace of the logout flow",
+      "description": "## Perform a network trace of the logout flow\n1. Go to your web application. If you closed it, recall that you can go to the PORTS tab in your workspace and select the globe icon in the Forwarded Address collumn for Port 37500.\n1.  Open **Google Chrome Developer Tools** (Control + Shift + J on Windows and Linux, or Command + Option + J on Mac).\n1. In the Google Chrome Developer Tools panel, select the **Network** tab.\n1. Login to your web app.\n1. Logout of your web app and notice that, after your browser sends a request to your app's `/logout` endpoint, there's a second request to   `https://{domain}.auth0.com/v2/logout`. This is because we set `idpLogout: true`.\n> This is the Auth0 alternative logout endpoint. The `returnTo` query parameter specifies a URI where your user should land after logout. This URI must be specified under your application's **Allowed logout URIs** in your Auth0 tenant.\n1. Select **Login** again to confirm that you are now prompted to re-enter your credentials since the Auth0 session has been closed."
+    },
+    {
+      "title": "Understand the logout flow using express-openid-connect",
       "file": "src/web-app/index.js",
-      "description": "## Examine the logout flow using `express-openid-connect`\n\n> The diagram below illuastrates the login flow when you use `express-openid-connect` in your Express web apps and set `idpLogout: true`.\n\nWhen you use `express-openid-connect` by calling `app.use(auth{configs})`, it defines `/login` and `/logout` endpoints for your web app. When you direct a user to log out via the `/logout` endpoint, the request is passed to the `express-openid-connect` middleware, which clears the application session cookie. \n\nIf `idpLogout: true`, then the middleware performs a redirect to your Auth0 Authorization Server's alternative logout endpoint, specifying a post-logout URI. By default, this is the root page (`/`) of your web app. This ends the Auth0 session and redirects the user to the unauthenticated view of the post-logout page.\n\n![](https://raw.githubusercontent.com/auth0/express-openid-connect/refs/heads/master/logout.png)",
+      "description": "## Examine the logout flow using `express-openid-connect`\n\n> The diagram below illuastrates the login flow when you use `express-openid-connect` in your Express web apps and set `idpLogout: true`.\n\nWhen you use `express-openid-connect` by calling `app.use(auth())`, it defines `/login` and `/logout` endpoints for your web app. When you direct a user to log out via the `/logout` endpoint, the request is passed to the `express-openid-connect` middleware, which clears the application session cookie. \n\nIf `idpLogout: true`, then the middleware performs a redirect to your Auth0 Authorization Server's alternative logout endpoint, specifying a post-logout URI in the `returnTo` parameter. By default, this is the root page (`/`) of your web app. This ends the Auth0 session and redirects the user to the unauthenticated view of the post-logout page.\n\n![](https://raw.githubusercontent.com/auth0/express-openid-connect/refs/heads/master/logout.png)",
       "line": 53,
       "selection": {
         "start": {

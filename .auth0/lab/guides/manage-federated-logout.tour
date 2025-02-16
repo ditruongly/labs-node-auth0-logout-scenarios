@@ -1,6 +1,7 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
   "title": "2: Examine federated logout",
+  "nextTour": "3 - Explore Backchannel Logout",
   "steps": [
     {
       "file": "",
@@ -47,7 +48,7 @@
       "file": "README.md",
       "line": 1,
       "title": "Recap",
-      "description": "\n**In this lab you:**\n\n- Examined the federated logout experience using Google as an IdP.\n\nYou've finished the end of the lab! You may now close and stop this Codespace."
+      "description": "\n**In this lab you:**\n\n- Examined the federated logout experience using Google as an IdP.\n"
     }
   ]
 }

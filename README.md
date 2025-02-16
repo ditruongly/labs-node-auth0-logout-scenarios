@@ -1,6 +1,6 @@
 # Lab: Implement Auth0 Logout Scenarios
 
-In this [Okta Training](https://www.okta.com/training/) hands-on lab, you are guided through different logout scenarios using a regular web application. Scenarios include federated logout of an external identity provider (IdP) and Global logout with Auth0’s implementation of Back-channel logout.
+In this [Okta Training](https://www.okta.com/training/) hands-on lab, you are guided through how to manage application, Auth0, and IdP sessions during user logout.
 
 --- 
 

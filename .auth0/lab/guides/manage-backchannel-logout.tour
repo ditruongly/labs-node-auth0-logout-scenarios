@@ -35,7 +35,7 @@
     },
     {
       "title": "Log out of the app",
-      "description": "## Log out of Web App A (Expenses)\n\n1. Log out of Web App A (Expenses) by selecting the **Logout** button.\n1. Switch tabs to Web App B (Sales).\n1. Pause and think about this question: Are you still logged in to Web App B?\n1. Refresh the Web App B (Sales) page. \n\n\n> Although you logged out of Web App A (Expenses) and have the `oidcLogout` parameter set to `true` in your `auth` middleware, your application session for Web App B (Sales) is still open as the session cookie is still valid. In order for Global logout to occur, Web App B will need a signal that the Auth0 session has been closed and that the cookie should be invalidated. \n\n![](https://articulateusercontent.com/rise/courses/m4UUeRe4DW9ESHbXWK95w3hEhOwIX7uX/IebQ1Di7r78DmZqh.png)"
+      "description": "## Log out of Web App A (Expenses)\n\n1. Log out of Web App A (Expenses) by selecting the **Logout** button.\n1. Switch tabs to Web App B (Sales).\n1. Pause and think about this question: Are you still logged in to Web App B?\n1. Refresh the Web App B (Sales) page. \n\n\n> Although you logged out of Web App A (Expenses) and have the `oidcLogout` parameter set to `true` in your `auth` middleware, your application session for Web App B (Sales) is still open as the session cookie is still valid. In order for Global logout to occur, Web App B will need a signal that the Auth0 session has been closed and that the cookie should be invalidated. \n"
     },
     {
       "title": "Visualize the Back-channel logout process",

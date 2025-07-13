@@ -44,7 +44,7 @@ app.use(
       response_type: 'code',
     },
     secret: SESSION_SECRET,
-    // idpLogout: true,
+    idpLogout: true,
     baseURL: APP_URL,
     issuerBaseURL: ISSUER_BASE_URL,
     clientID: CLIENT_ID,
